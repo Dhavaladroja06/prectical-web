@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Website</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            /* background-color: #333; */
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1em 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ff9800;
+        }
+        /* Slider */
+        .slider {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+        .slides img {
+            width: 100%;
+            height: 100%;
+            object-fit : contain;
+            padding: 10px;
+        }
+        .slides {
+            display: flex;
+            transition: transform 2s ease-in-out;
+        }
+        /* About Us */
+        /* .about, .services, .fun-facts, .contact, .clients {
+            padding: 40px 20px;
+            text-align: center;
+        } */
+
+        .services {
+    padding: 40px 20px;
+    background: #f3f3f3; /* Light background for contrast */
+    color: #333; /* Dark text for readability */
+    text-align: center;
+    /* max-width: 1200px; */
+    margin: 3%;
+    border-radius: 10px;
+}
+
+.services h2 {
+    font-size: 2.5rem;
+    color: #ff9800; /* Accent color */
+    margin-bottom: 40px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Service Cards Layout */
+.service-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    justify-items: center;
+}
+
+.service-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card img {
+    width: 80px; /* Set icon size */
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.service-card p {
+    font-size: 1rem;
+    color: #666; /* Light gray text for descriptions */
+    margin-bottom: 20px;
+}
+
+.service-card:hover {
+    transform: translateY(-10px); /* Slight lift effect on hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+        .clients {
+    padding: 40px 20px;
+    background: #333; /* Matching the dark background to maintain consistency */
+    color: white;
+    text-align: center;
+    max-width: 1200px;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+.clients h2 {
+    font-size: 2.5rem;
+    color: #ff9800; /* Accent color for heading */
+    margin-bottom: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Client Logos Grid */
+.client-logos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    justify-items: center; /* Center logos horizontally */
+    align-items: center; /* Center logos vertically */
+}
+
+.client-logos img {
+    width: 100px; /* Fixed size for consistency */
+    height: 100px;
+    object-fit: contain;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.client-logos img:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow on hover */
+}
+        /* About Us Section Styling */
+.about {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    border-left: 5px solid #ff9800;
+    text-align: center;
+    /* max-width: 1200px; */
+    margin: 3%;
+}
+
+.about h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.about p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: justify;
+}
+
+.about p:first-child {
+    font-weight: bold;
+    color: #333;
+}
+
+.about p:last-child {
+    font-style: italic;
+    color: #ff9800;
+}
+
+        /* Fun Facts */
+        /* Fun Facts Section Styling */
+.fun-facts {
+    padding: 40px 20px;
+    background: linear-gradient(to right, #fff, #fff); /* Matching background with About Us and Footer */
+    color: white;
+    text-align: center;
+    /* max-width: 1200px; */
+    margin: 3%;
+    border-radius: 10px;
+}
+
+.fun-facts h2 {
+    font-size: 2.5rem;
+    color: #ff9800; /* Accent color */
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.fun-facts .fact {
+    display: inline-block;
+    width: 30%;
+    margin: 15px;
+    padding: 20px;
+    background-color: #444; /* Darker background for individual fact boxes */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.fun-facts .fact h3 {
+    font-size: 3rem;
+    color: #ff9800; /* Highlighting the number */
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.fun-facts .fact p {
+    font-size: 1.2rem;
+    color: #f3f3f3;
+    margin-top: 0;
+    font-weight: normal;
+}
+
+        /* Contact Form */
+        .contact {
+    padding: 40px 20px;
+    background: #333; /* Dark background to match the footer */
+    color: white;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.contact h2 {
+    font-size: 2.5rem;
+    color: #ff9800; /* Accent color for heading */
+    margin-bottom: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact form input, 
+.contact form textarea {
+    width: 100%;
+    padding: 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+.contact form input:focus, 
+.contact form textarea:focus {
+    border-color: #ff9800; /* Highlight border on focus */
+    outline: none;
+}
+
+.contact form textarea {
+    resize: vertical; /* Allow resizing of the textarea */
+}
+
+.contact form button {
+    padding: 8px 12px;
+    font-size: 1.2rem;
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact form button:hover {
+    background-color: #e68900; /* Darker shade on hover */
+}
+        /* Clients' Logos */
+        .clients img {
+            max-width: 100px;
+            margin: 10px;
+        }
+        /* Footer */
+        /* Footer Enhancements */
+footer {
+    background: linear-gradient(to right, #333, #555); /* Gradient background */
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 14px;
+}
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* max-width: 1200px; */
+    margin: 3%;
+}
+.footer-container div {
+    flex: 1;
+    margin: 10px;
+    min-width: 200px;
+}
+.footer-container h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ff9800;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+.footer-container p,
+.footer-container ul {
+    line-height: 1.8;
+}
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+.footer-links ul li a {
+    color: #f3f3f3;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.footer-links ul li a:hover {
+    color: #ff9800;
+}
+.social-icons a {
+    display: inline-block;
+    margin: 0 5px;
+    transition: transform 0.3s;
+}
+.social-icons img {
+    width: 30px;
+    height: 30px;
+}
+.social-icons a:hover {
+    transform: scale(1.1);
+}
+
+.map {
+    padding: 40px 20px;
+    background: #f3f3f3; /* Light background for contrast */
+    text-align: center;
+    border-radius: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.map h2 {
+    font-size: 2.5rem;
+    color: #ff9800; /* Accent color */
+    margin-bottom: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.map-container {
+    overflow: hidden;
+    border-radius: 15px; /* Rounded corners for the map */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    max-width: 100%; /* Ensures responsiveness */
+}
+
+.map-container iframe {
+    width: 100%; /* Full width within container */
+    height: 400px;
+    border: none; /* Remove iframe border */
+}
+
+/* Footer bottom text */
+footer > p {
+    margin-top: 20px;
+    font-size: 12px;
+    border-top: 1px solid #444;
+    padding-top: 10px;
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Business Name</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#fun-facts">Fun-facts</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#clients">clients</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#map">Map</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Slider Section -->
+    <section class="slider">
+        <div class="slides">
+            <img src="/slider/pexels-fotios-photos-16129703.jpg" alt="Slide 1">
+            <img src="/slider/pexels-george-milton-7014916.jpg" alt="Slide 2">
+            <img src="/slider/pexels-kawerodriguess-16313511.jpg" alt="Slide 3">
+            <img src="/slider/pexels-tima-miroshnichenko-6615281.jpg" alt="Slide 4">
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="about" class="about">
+    <h2>About Us</h2>
+    <p>Welcome to our company! We provide the best services to help you grow your business. Our dedicated team works around the clock to ensure we deliver exceptional results for our clients.</p>
+    <p>Founded in 2010, we have quickly become a trusted partner for businesses of all sizes. We are passionate about innovation and aim to bring fresh ideas and creative solutions to every project.</p>
+    <p>Our mission is to provide high-quality services that meet the unique needs of each client, and our vision is to be the leading provider of business solutions worldwide.</p>
+    <p>We pride ourselves on our transparent communication and customer-focused approach. Our team values collaboration and strives for excellence in everything we do. Whether you're a startup or an established enterprise, we are here to help you achieve your goals.</p>
+    <p>Join us as we continue to grow and lead in the industry. Together, we can build a brighter future for your business!</p>
+</section>
+
+
+    <!-- Our Services -->
+    <section id="services" class="services">
+        <h2>Our Services</h2>
+        <div class="service-cards">
+            <div class="service-card">
+                <img src="/services/pexels-realtoughcandy-11035371.jpg" alt="Service 1 Icon">
+                <h3>Service 1</h3>
+                <p>Providing high-quality solutions to help your business grow.</p>
+            </div>
+            <div class="service-card">
+                <img src="services/pexels-realtoughcandy-11035386.jpg" alt="Service 2 Icon">
+                <h3>Service 2</h3>
+                <p>Expert advice and strategy development for businesses of all sizes.</p>
+            </div>
+            <div class="service-card">
+                <img src="services/pexels-realtoughcandy-11035396.jpg" alt="Service 3 Icon">
+                <h3>Service 3</h3>
+                <p>Tailored services designed to meet the unique needs of your industry.</p>
+            </div>
+            <div class="service-card">
+                <img src="services/pexels-realtoughcandy-11035388.jpg" alt="Service 4 Icon">
+                <h3>Service 3</h3>
+                <p>Tailored services designed to meet the unique needs of your industry.</p>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Fun Facts -->
+    <section id="fun-facts" class="fun-facts">
+        <h2>Fun Facts</h2>
+        <div class="fact">
+            <h3>100+</h3>
+            <p>Projects Completed</p>
+        </div>
+        <div class="fact">
+            <h3>200+</h3>
+            <p>Happy Clients</p>
+        </div>
+        <div class="fact">
+            <h3>50+</h3>
+            <p>Team Members</p>
+        </div>
+    </section>    
+
+    <!-- Contact Form -->
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Clients' Logos -->
+    <section id="clients" class="clients">
+        <h2>Our Clients</h2>
+        <img src="/clients/pexels-creationhill-1681010.jpg" alt="Client 1"> 
+        <img src="/clients/pexels-moose-photos-170195-1587009.jpg" alt="Client 2">
+        <img src="/clients/pexels-juanico-2589650.jpg" alt="Client 3">
+    </section>
+
+    <!-- Map Embed -->
+    <section id="map" class="map">
+        <iframe 
+            width="100%" 
+            height="400" 
+            frameborder="0" 
+            style="border:0" 
+            src="https://www.google.com/maps?q=New+York&output=embed" 
+            allowfullscreen>
+        </iframe>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <h3>About Us</h3>
+                <p>We are dedicated to providing top-quality services to help your business thrive. Contact us for more details!</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#clients">Clients</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><img src="https://via.placeholder.com/30?text=F" alt="Facebook"></a>
+                    <a href="#" aria-label="Twitter"><img src="https://via.placeholder.com/30?text=T" alt="Twitter"></a>
+                    <a href="#" aria-label="LinkedIn"><img src="https://via.placeholder.com/30?text=L" alt="LinkedIn"></a>
+                    <a href="#" aria-label="Instagram"><img src="https://via.placeholder.com/30?text=I" alt="Instagram"></a>
+                </div>
+            </div>
+        </div>
+        <p>&copy; 2024 Business Name. All Rights Reserved.</p>
+    </footer>
+    
+
+    <!-- JavaScript for Slider -->
+    <script>
+        const slides = document.querySelector('.slides');
+        let slideIndex = 0;
+        
+        function showSlides() {
+            slideIndex++;
+            if (slideIndex >= slides.children.length) slideIndex = 0;
+            slides.style.transform = 'translateX(' + (-slideIndex * 100) + '%)';
+        }
+        setInterval(showSlides, 3000);
+    </script>
+</body>
+</html>
